@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amatus — Geração Forte</title>
+  <meta name="description" content="Amatus - Grupo Missionário de Jovens. Geração Forte. Amados por Jesus.">
+  <link rel="icon" type="image/png" href="assets/img/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<style id="amatus-splash-style">
+#amatus-splash{position:fixed;inset:0;z-index:100000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;background:radial-gradient(ellipse at 50% 55%, #3D1A0A 0%, #1A0800 42%, #0A0A0A 100%);overflow:hidden;transition:opacity .6s ease;}
+#amatus-splash.amatus-splash-hide{opacity:0;pointer-events:none;}
+html.amatus-splash-lock,body.amatus-splash-lock{overflow:hidden!important;}
+.amatus-splash-flamewrap{position:relative;width:170px;height:170px;display:flex;align-items:center;justify-content:center;}
+.amatus-splash-glow{position:absolute;width:340px;height:340px;left:50%;top:50%;transform:translate(-50%,-50%) scale(.5);background:radial-gradient(circle, rgba(232,73,29,.35) 0%, rgba(245,166,35,.12) 35%, transparent 70%);animation:amatus-ignite-glow 1.6s ease-out forwards, amatus-glow-pulse 2.4s 1.6s ease-in-out infinite;}
+.amatus-splash-flame{width:118px;height:118px;object-fit:contain;opacity:0;transform:scale(.5) translateY(14px);animation:amatus-ignite-flame 1.4s cubic-bezier(.2,.7,.2,1) forwards, amatus-flame-flicker 1.8s 1.4s ease-in-out infinite;}
+@keyframes amatus-ignite-flame{0%{opacity:0;transform:scale(.5) translateY(16px);filter:brightness(.4) drop-shadow(0 0 0 rgba(232,73,29,0));}55%{opacity:1;}100%{opacity:1;transform:scale(1) translateY(0);filter:brightness(1) drop-shadow(0 0 26px rgba(232,73,29,.6));}}
+@keyframes amatus-flame-flicker{0%,100%{transform:scale(1) translateY(0);filter:brightness(1) drop-shadow(0 0 26px rgba(232,73,29,.6));}50%{transform:scale(1.04) translateY(-2px);filter:brightness(1.12) drop-shadow(0 0 34px rgba(245,166,35,.7));}}
+@keyframes amatus-ignite-glow{0%{opacity:0;transform:translate(-50%,-50%) scale(.4);}100%{opacity:1;transform:translate(-50%,-50%) scale(1);}}
+@keyframes amatus-glow-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.85;}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1;}}
+.amatus-splash-word{height:62px;object-fit:contain;opacity:0;transform:translateY(10px);filter:brightness(10) drop-shadow(0 0 12px rgba(232,73,29,.4));animation:amatus-splash-in .7s 1s ease forwards;}
+@keyframes amatus-splash-in{to{opacity:1;transform:translateY(0);}}
+.amatus-splash-loading{font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:5px;text-transform:uppercase;color:#F5A623;opacity:0;animation:amatus-splash-in .7s 1.3s ease forwards;}
+.amatus-splash-dots span{opacity:.2;animation:amatus-dot 1.2s infinite;}
+.amatus-splash-dots span:nth-child(2){animation-delay:.2s;}
+.amatus-splash-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes amatus-dot{0%,60%,100%{opacity:.2;}30%{opacity:1;}}
+.amatus-splash-bar{position:relative;width:150px;height:2px;border-radius:2px;background:rgba(245,240,232,.12);overflow:hidden;opacity:0;animation:amatus-splash-in .6s 1.2s ease forwards;}
+.amatus-splash-bar-fill{position:absolute;left:0;top:0;height:100%;width:0;border-radius:2px;background:linear-gradient(90deg,#C0392B,#E8491D,#F5A623);animation:amatus-bar 1.7s ease-out forwards;}
+@keyframes amatus-bar{0%{width:0;}100%{width:100%;}}
+.amatus-ember{position:absolute;bottom:0;width:4px;height:4px;border-radius:50%;background:#F5A623;box-shadow:0 0 6px 1px rgba(245,166,35,.8);opacity:0;pointer-events:none;}
+@keyframes amatus-ember-rise{0%{opacity:0;transform:translateY(0) translateX(0) scale(1);}15%{opacity:1;}100%{opacity:0;transform:translateY(-230px) translateX(var(--ex,0)) scale(.3);}}
+</style>
+<div id="amatus-splash" role="status" aria-label="Carregando">
+  <div class="amatus-splash-flamewrap">
+    <div class="amatus-splash-glow"></div>
+    <img class="amatus-splash-flame" alt="" src="assets/img/logo-icon.png">
+  </div>
+  <img class="amatus-splash-word" alt="AMATUS" src="assets/img/logo-text.png">
+  <div class="amatus-splash-bar"><div class="amatus-splash-bar-fill"></div></div>
+  <div class="amatus-splash-loading">Acendendo a chama<span class="amatus-splash-dots"><span>.</span><span>.</span><span>.</span></span></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo" style="cursor: pointer; text-decoration: none;">
+    <img class="nav-logo-icon" src="assets/img/logo-icon.png" alt="Amatus ícone" style="width: 20px">
+    <img class="nav-logo-text" src="assets/img/logo-text.png" alt="Amatus" style="width: 50px; height: 30px">
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="#agenda" data-pt="Agenda" data-en="Schedule">Agenda</a></li>
+    <li><a href="#loja" data-pt="Loja" data-en="Shop">Loja</a></li>
+    <li><a href="#redes" data-pt="Redes" data-en="Social">Redes</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" style="font-family: Montserrat">EN</button>
+    <button class="theme-toggle" id="themeToggle">☀️</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <canvas id="emberCanvas"></canvas>
+  <div class="hero-content" style="padding: 85px">
+    <img class="hero-logo-icon" src="assets/img/logo-icon.png" alt="Amatus Logo" style="width: 70px; height: 70px; object-fit: contain; margin: 1px">
+    <p class="hero-eyebrow" data-pt="Grupo Missionário de Jovens" data-en="Youth Missionary Group" style="line-height: 0">Grupo Missionário de Jovens</p>
+    <img class="hero-logo-text" src="assets/img/logo-text.png" alt="AMATUS" style="width: 200px; height: 100px; object-fit: contain;">
+    <p class="hero-sub" data-pt="Geração Forte. Amados por Jesus. Vista essa missão — anuncie o Reino." data-en="A Strong Generation. Loved by Jesus. Wear this mission — proclaim the Kingdom." style="margin: 1px; padding: 9px">Geração Forte. Amados por Jesus. Junte-se a nós — anuncie o Reino.</p>
+    <div class="hero-cta">
+      <a href="#agenda" class="btn-primary" data-pt="Ver Agenda" data-en="View Schedule">Ver Agenda</a>
+      <a href="#loja" class="btn-outline" data-pt="Nossas Camisetas" data-en="Our Shirts">Nossas Camisetas</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg width="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.4"><path d="M19 9l-7 7-7-7"></path></svg>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <p class="section-label" data-pt="Quem Somos" data-en="Who We Are">Quem Somos</p>
+        <h2 class="section-title" data-pt="AMADOS POR JESUS" data-en="LOVED BY JESUS">amados por jesus</h2>
+        <p data-pt="Amatus — do latim: amados. Somos um grupo missionário de jovens movidos pelo amor de Jesus e pelo chamado de alcançar uma geração inteira para o Reino de Deus." data-en="Amatus — from Latin: beloved. We are a youth missionary group moved by the love of Jesus and the calling to reach an entire generation for the Kingdom of God.">
+          Amatus — do latim: amados. Somos um grupo missionário de jovens movidos pelo amor de Jesus e pelo chamado de alcançar uma geração inteira para o Reino de Deus.
+        </p>
+        <p data-pt="Nossa missão é simples e poderosa: alcançar mais jovens, fortalecer comunidades e expandir o Reino — uma vida de cada vez." data-en="Our mission is simple and powerful: reach more young people, strengthen communities, and expand the Kingdom — one life at a time.">
+          Nossa missão é simples e poderosa: alcançar mais jovens, fortalecer comunidades e expandir o Reino — uma vida de cada vez.
+        </p>
+        <div class="sobre-badge">
+          <p data-pt="“Uma geração forte, movida pela fé e pelo amor de Jesus.”" data-en="“A strong generation, moved by faith and the love of Jesus.”">“Uma geração forte, movida pela fé e pelo amor de Jesus.”</p>
+        </div>
+      </div>
+      <div class="sobre-visual reveal">
+        <div class="flame-ring"></div>
+        <img class="sobre-logo-icon" src="assets/img/logo-icon.png" alt="Amatus">
+        <img class="sobre-logo-text" src="assets/img/logo-text.png" alt="AMATUS">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label" data-pt="Venha Nos Visitar" data-en="Come Visit Us">Venha Nos Visitar</p>
+      <h2 class="section-title" data-pt="NOSSA AGENDA" data-en="SCHEDULE">NOSSA AGENDA</h2>
+    </div>
+    <div class="agenda-grid">
+      <div class="agenda-card reveal">
+        <span class="agenda-tag tag-weekly" data-pt="Toda Sexta" data-en="Every Friday">Toda Sexta</span>
+        <h3 data-pt="AFO — Amatus Friday Oration" data-en="AFO — Amatus Friday Oration">AFO — Amatus Friday Oration</h3>
+        <div class="time">22:00 →</div>
+        <p data-pt="Encontro semanal de oração e comunhão entre os jovens do Amatus. Sem horário para acabar — enquanto o fogo durar!" data-en="Weekly prayer and fellowship meeting among Amatus youth. No set end time — as long as the fire lasts!">
+          Encontro semanal de oração e comunhão. Sem horário para acabar — enquanto o fogo durar!
+        </p>
+        <div class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span>Rua Osvaldo Marcondes do Amaral, 15 — Jardim Juliana, Ferraz de Vasconcelos</span>
+        </div>
+      </div>
+      <div class="agenda-card reveal">
+        <span class="agenda-tag tag-event" data-pt="Culto Missionário" data-en="Missionary Service">Culto Missionário</span>
+        <h3 data-pt="Culto Amatus" data-en="Amatus Service">Culto Amatus</h3>
+        <div class="time" data-pt="A cada ~6 meses" data-en="Every ~6 months">A cada ~6 meses</div>
+        <p data-pt="Nosso culto missionário reúne jovens, homens, mulheres, crianças e adolescentes. Fique de olho nas redes sociais para as próximas datas!" data-en="Our missionary service brings together youth, men, women, children, and teens. Follow our social media for upcoming dates!">
+          Nosso culto missionário reúne toda a comunidade. Fique de olho nas redes sociais para as próximas datas!
+        </p>
+        <div class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span>Rua Osvaldo Marcondes do Amaral, 15 — Jardim Juliana, Ferraz de Vasconcelos</span>
+        </div>
+      </div>
+      <div class="agenda-card reveal">
+        <span class="agenda-tag tag-church" data-pt="Todo Sábado" data-en="Every Saturday">Todo Sábado</span>
+        <h3 data-pt="Culto de Sábado" data-en="Saturday Service">Culto de Sábado</h3>
+        <div class="time">19:00 – 21:00</div>
+        <p data-pt="Uma noite de adoração, palavra e comunhão para fortalecer a fé de toda a família." data-en="A night of worship, the Word, and fellowship to strengthen the faith of the whole family.">
+          Uma noite de adoração, palavra e comunhão para fortalecer a fé de toda a família.
+        </p>
+        <div class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span>Rua Osvaldo Marcondes do Amaral, 15 — Jardim Juliana, Ferraz de Vasconcelos</span>
+        </div>
+      </div>
+      <div class="agenda-card reveal">
+        <span class="agenda-tag tag-church" data-pt="Todo Domingo" data-en="Every Sunday">Todo Domingo</span>
+        <h3 data-pt="Culto de Domingo" data-en="Sunday Service">Culto de Domingo</h3>
+        <div class="time">08:00 – 10:00</div>
+        <p data-pt="Comece o domingo na presença de Deus — um culto de fé e encontro para todas as idades." data-en="Start your Sunday in God's presence — a service of faith and encounter for all ages.">
+          Comece o domingo na presença de Deus — um culto para todas as idades.
+        </p>
+        <div class="location">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;margin-top:1px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span>Rua Osvaldo Marcondes do Amaral, 15 — Jardim Juliana, Ferraz de Vasconcelos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOJA -->
+<section id="loja">
+  <div class="container">
+    <div class="loja-header reveal">
+      <p class="section-label" data-pt="Vista a Missão" data-en="Wear the Mission">Vista a Missão</p>
+      <h2 class="section-title" data-pt="NOSSAS CAMISETAS" data-en="OUR SHIRTS">NOSSAS CAMISETAS</h2>
+      <p style="color:var(--gray);margin-top:0.75rem;font-size:0.9rem" data-pt="Produção sob demanda. Entre em contato pelo WhatsApp para encomendar." data-en="Made to order. Contact us on WhatsApp to place your order.">
+        Produção sob demanda. Entre em contato pelo WhatsApp para encomendar.
+      </p>
+    </div>
+    <div class="shirts-grid">
+      <div class="shirt-card reveal">
+        <div class="shirt-img-wrap">
+          <img src="assets/img/shirt-geracao-forte.jpg" alt="Amatus Geração Forte">
+        </div>
+        <div class="shirt-info">
+          <h3 data-pt="Geração Forte" data-en="Strong Generation">AMATUS Edição 4 - Renova-me</h3>
+          <p data-pt="Estampa artística bíblica • Tom vinho e dourado" data-en="Biblical art print • Wine and gold tones">Estampa artística bíblica • Tom vinho e dourado</p>
+          <div class="shirt-footer">
+            <div class="sizes">
+              <span class="size-badge">P</span><span class="size-badge">M</span>
+              <span class="size-badge">G</span><span class="size-badge">GG</span>
+            </div>
+            <a href="https://wa.me/5511986019818?text=Olá!%20Quero%20encomendar%20a%20camisa%20Geração%20Forte%20do%20Amatus%20🔥" target="_blank" class="shirt-cta" data-pt="Encomendar" data-en="Order Now">Encomendar</a>
+          </div>
+        </div>
+      </div>
+      <div class="shirt-card reveal">
+        <div class="shirt-img-wrap">
+          <img src="assets/img/shirt-evangelista-copa.jpg" alt="Evangelista Edição Copa">
+        </div>
+        <div class="shirt-info">
+          <h3 data-pt="Evangelista — Edição Copa" data-en="Evangelist — Copa Edition">AMATUS Edição Copa - Todas as Nações</h3>
+          <p data-pt="Oversized • Por Todas as Nações • Mt 28:19" data-en="Oversized • To All Nations • Mt 28:19">Oversized • Por Todas as Nações • Mt 28:19</p>
+          <div class="shirt-footer">
+            <div class="sizes">
+              <span class="size-badge">P</span><span class="size-badge">M</span>
+              <span class="size-badge">G</span><span class="size-badge">GG</span>
+            </div>
+            <a href="https://wa.me/5511986019818?text=Olá!%20Quero%20encomendar%20a%20camisa%20Evangelista%20Edição%20Copa%20do%20Amatus%20🔥" target="_blank" class="shirt-cta" data-pt="Encomendar" data-en="Order Now">Encomendar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REDES -->
+<section id="redes">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <p class="section-label" data-pt="Fique Conectado" data-en="Stay Connected">Fique Conectado</p>
+      <h2 class="section-title" data-pt="SIGA O AMATUS" data-en="FOLLOW AMATUS">SIGA O AMATUS</h2>
+    </div>
+    <div class="redes-grid">
+      <a href="https://www.instagram.com/somosamatus" target="_blank" class="rede-card reveal">
+        <div class="rede-icon" style="background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+        </div>
+        <h3>Instagram</h3>
+        <p>@somosamatus</p>
+      </a>
+      <a href="https://youtube.com/@somosamatus" target="_blank" class="rede-card reveal">
+        <div class="rede-icon" style="background:#FF0000">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+        </div>
+        <h3>YouTube</h3>
+        <p data-pt="Cultos ao vivo • Pregações" data-en="Live services • Sermons">Cultos ao vivo • Pregações</p>
+      </a>
+      <a href="https://wa.me/5511986019818?text=Olá!%20Vim%20pelo%20site%20do%20Amatus%20🔥" target="_blank" class="rede-card reveal">
+        <div class="rede-icon" style="background:#25D366">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg>
+        </div>
+        <h3>WhatsApp</h3>
+        <p data-pt="Pedidos • Informações" data-en="Orders • Info">Pedidos • Informações</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <img class="footer-logo-icon" src="assets/img/logo-icon.png" alt="Amatus">
+    <img class="footer-logo-text" src="assets/img/logo-text.png" alt="AMATUS">
+    <p style="margin-top:0.5rem" data-pt="Grupo Missionário de Jovens • Ferraz de Vasconcelos, SP" data-en="Youth Missionary Group • Ferraz de Vasconcelos, SP">Grupo Missionário de Jovens • Ferraz de Vasconcelos, SP</p>
+    <p style="margin-top:0.75rem">
+      <a href="https://instagram.com/somosamatus" target="_blank">Instagram</a> &nbsp;·&nbsp;
+      <a href="https://youtube.com/@somosamatus" target="_blank">YouTube</a> &nbsp;·&nbsp;
+      <a href="https://wa.me/5511986019818" target="_blank">WhatsApp</a>
+    </p>
+    <p style="margin-top:1.5rem;font-size:0.72rem;opacity:0.4" data-pt="© 2025 Amatus. Feito com 🔥 para a glória de Deus." data-en="© 2025 Amatus. Made with 🔥 for the glory of God.">© 2026 Amatus. Feito com 🔥 para a glória de Deus.</p>
+  </div>
+</footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
